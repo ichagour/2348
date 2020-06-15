@@ -1,4 +1,3 @@
-
 input_file = "inputDates.txt"
 output_file = "parsedDates.txt"
 
@@ -19,13 +18,13 @@ map_of_months = {
 
 
 def validate(raw_date):
-    tokens = raw_date.split(" ")
-    if len(tokens) != 3:
+    list = raw_date.split(" ")
+    if len(list) != 3:
         return False
-    month = tokens[0]
+    month = list[0]
     if month not in map_of_months:
         return False
-    day = tokens[1]
+    day = list[1]
     if day[-1] != ",":
         return False
     return True
@@ -36,18 +35,18 @@ def is_end(raw_date):
 
 
 def extract_month(raw_date):
-    tokens = raw_date.split(" ")
-    return map_of_months[tokens[0]]
+    list = raw_date.split(" ")
+    return map_of_months[list[0]]
 
 
 def extract_day(raw_date):
-    tokens = raw_date.split(" ")
-    return tokens[1][0:-1]
+    list = raw_date.split(" ")
+    return list[1][0:-1]
 
 
 def extract_year(raw_date):
-    tokens = raw_date.split(" ")
-    return tokens[2].strip()
+    list = raw_date.split(" ")
+    return list[2].strip()
 
 
 with open(output_file, "w") as outfile, open(
@@ -64,6 +63,10 @@ with open(output_file, "w") as outfile, open(
             date_str = f"{month}/{day}/{year}"
             print(date_str)
             outfile.write(date_str + "\n")
+
+
+
+
 
 
 
